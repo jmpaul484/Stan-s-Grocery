@@ -50,14 +50,14 @@
             listBox1.FormattingEnabled = true;
             listBox1.Location = new Point(12, 106);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(412, 529);
+            listBox1.Size = new Size(747, 529);
             listBox1.TabIndex = 0;
             listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // SearchTextBox
             // 
             SearchTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            SearchTextBox.Location = new Point(12, 36);
+            SearchTextBox.Location = new Point(347, 36);
             SearchTextBox.Name = "SearchTextBox";
             SearchTextBox.Size = new Size(193, 31);
             SearchTextBox.TabIndex = 1;
@@ -69,7 +69,7 @@
             // 
             FilterComboBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             FilterComboBox.FormattingEnabled = true;
-            FilterComboBox.Location = new Point(211, 36);
+            FilterComboBox.Location = new Point(546, 36);
             FilterComboBox.Name = "FilterComboBox";
             FilterComboBox.Size = new Size(213, 33);
             FilterComboBox.TabIndex = 2;
@@ -82,7 +82,7 @@
             MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItem });
             MenuStrip1.Location = new Point(0, 0);
             MenuStrip1.Name = "MenuStrip1";
-            MenuStrip1.Size = new Size(436, 33);
+            MenuStrip1.Size = new Size(771, 33);
             MenuStrip1.TabIndex = 3;
             MenuStrip1.Text = "menuStrip1";
             // 
@@ -121,33 +121,33 @@
             // 
             FilterByAisleRadioButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             FilterByAisleRadioButton.AutoSize = true;
-            FilterByAisleRadioButton.Location = new Point(12, 73);
+            FilterByAisleRadioButton.Location = new Point(347, 73);
             FilterByAisleRadioButton.Name = "FilterByAisleRadioButton";
             FilterByAisleRadioButton.Size = new Size(141, 29);
             FilterByAisleRadioButton.TabIndex = 4;
             FilterByAisleRadioButton.TabStop = true;
             FilterByAisleRadioButton.Text = "Filter By Aisle";
             FilterByAisleRadioButton.UseVisualStyleBackColor = true;
-            FilterByAisleRadioButton.CheckedChanged += radioButton1_CheckedChanged;
+            FilterByAisleRadioButton.CheckedChanged += FilterByAisleRadioButton_CheckedChanged;
             // 
             // FilterByCategoryRadioButton
             // 
             FilterByCategoryRadioButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             FilterByCategoryRadioButton.AutoSize = true;
-            FilterByCategoryRadioButton.Location = new Point(211, 75);
+            FilterByCategoryRadioButton.Location = new Point(546, 75);
             FilterByCategoryRadioButton.Name = "FilterByCategoryRadioButton";
             FilterByCategoryRadioButton.Size = new Size(176, 29);
             FilterByCategoryRadioButton.TabIndex = 5;
             FilterByCategoryRadioButton.TabStop = true;
             FilterByCategoryRadioButton.Text = "Filter By Category";
             FilterByCategoryRadioButton.UseVisualStyleBackColor = true;
-            FilterByCategoryRadioButton.CheckedChanged += radioButton2_CheckedChanged;
+            FilterByCategoryRadioButton.CheckedChanged += FilterByCategoryRadioButton_CheckedChanged;
             // 
             // StansGrocery
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(436, 650);
+            ClientSize = new Size(771, 650);
             Controls.Add(FilterByCategoryRadioButton);
             Controls.Add(FilterByAisleRadioButton);
             Controls.Add(FilterComboBox);

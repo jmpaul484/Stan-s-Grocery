@@ -68,13 +68,8 @@ namespace Stan_s_Grocery
             }
         }
 
-        private void SearchTextBox_TextChanged(object sender, EventArgs e)
+        void Searching()
         {
-            if (SearchTextBox.Text == "zzz")
-            {
-                Close();
-            }
-
             string searchText = SearchTextBox.Text.Trim();
 
             listBox1.Items.Clear();
@@ -92,6 +87,17 @@ namespace Stan_s_Grocery
                         GroceryItems[index, 2]));
                 }
             }
+        }
+
+        private void SearchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (SearchTextBox.Text == "zzz")
+            {
+                Close();
+            }
+            Searching();
+
+            
         }
         private void SearchTextBox_Clicked(object sender, MouseEventArgs e)
         {
@@ -111,12 +117,12 @@ namespace Stan_s_Grocery
 
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void FilterByAisleRadioButton_CheckedChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        private void FilterByCategoryRadioButton_CheckedChanged(object sender, EventArgs e)
         {
 
         }
