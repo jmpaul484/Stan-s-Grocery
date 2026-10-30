@@ -74,6 +74,24 @@ namespace Stan_s_Grocery
             {
                 Close();
             }
+
+            string searchText = SearchTextBox.Text.Trim();
+
+            listBox1.Items.Clear();
+
+            for (int index = 0; index < GroceryItems.GetLength(0); index++)
+            {
+                string itemName = GroceryItems[index, 0];
+
+                if (string.IsNullOrWhiteSpace(searchText) ||
+                    itemName.Contains(searchText, StringComparison.OrdinalIgnoreCase))
+                {
+                    listBox1.Items.Add(string.Join(", ",
+                        GroceryItems[index, 0],
+                        GroceryItems[index, 1],
+                        GroceryItems[index, 2]));
+                }
+            }
         }
         private void SearchTextBox_Clicked(object sender, MouseEventArgs e)
         {
@@ -89,6 +107,16 @@ namespace Stan_s_Grocery
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
 
         }

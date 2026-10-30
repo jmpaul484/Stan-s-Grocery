@@ -39,8 +39,8 @@
             helpToolStripMenuItem = new ToolStripMenuItem();
             aboutToolStripMenuItem = new ToolStripMenuItem();
             MainToolTip = new ToolTip(components);
-            radioButton1 = new RadioButton();
-            radioButton2 = new RadioButton();
+            FilterByAisleRadioButton = new RadioButton();
+            FilterByCategoryRadioButton = new RadioButton();
             MenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -48,7 +48,7 @@
             // 
             listBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             listBox1.FormattingEnabled = true;
-            listBox1.Location = new Point(574, 56);
+            listBox1.Location = new Point(12, 106);
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(412, 529);
             listBox1.TabIndex = 0;
@@ -56,7 +56,8 @@
             // 
             // SearchTextBox
             // 
-            SearchTextBox.Location = new Point(574, 12);
+            SearchTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            SearchTextBox.Location = new Point(12, 36);
             SearchTextBox.Name = "SearchTextBox";
             SearchTextBox.Size = new Size(193, 31);
             SearchTextBox.TabIndex = 1;
@@ -66,8 +67,9 @@
             // 
             // FilterComboBox
             // 
+            FilterComboBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             FilterComboBox.FormattingEnabled = true;
-            FilterComboBox.Location = new Point(773, 12);
+            FilterComboBox.Location = new Point(211, 36);
             FilterComboBox.Name = "FilterComboBox";
             FilterComboBox.Size = new Size(213, 33);
             FilterComboBox.TabIndex = 2;
@@ -80,7 +82,7 @@
             MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItem });
             MenuStrip1.Location = new Point(0, 0);
             MenuStrip1.Name = "MenuStrip1";
-            MenuStrip1.Size = new Size(998, 33);
+            MenuStrip1.Size = new Size(436, 33);
             MenuStrip1.TabIndex = 3;
             MenuStrip1.Text = "menuStrip1";
             // 
@@ -115,35 +117,39 @@
             aboutToolStripMenuItem.Size = new Size(166, 34);
             aboutToolStripMenuItem.Text = "About";
             // 
-            // radioButton1
+            // FilterByAisleRadioButton
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(18, 75);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(141, 29);
-            radioButton1.TabIndex = 4;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "radioButton1";
-            radioButton1.UseVisualStyleBackColor = true;
+            FilterByAisleRadioButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            FilterByAisleRadioButton.AutoSize = true;
+            FilterByAisleRadioButton.Location = new Point(12, 73);
+            FilterByAisleRadioButton.Name = "FilterByAisleRadioButton";
+            FilterByAisleRadioButton.Size = new Size(141, 29);
+            FilterByAisleRadioButton.TabIndex = 4;
+            FilterByAisleRadioButton.TabStop = true;
+            FilterByAisleRadioButton.Text = "Filter By Aisle";
+            FilterByAisleRadioButton.UseVisualStyleBackColor = true;
+            FilterByAisleRadioButton.CheckedChanged += radioButton1_CheckedChanged;
             // 
-            // radioButton2
+            // FilterByCategoryRadioButton
             // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(12, 110);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(141, 29);
-            radioButton2.TabIndex = 5;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "radioButton2";
-            radioButton2.UseVisualStyleBackColor = true;
+            FilterByCategoryRadioButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            FilterByCategoryRadioButton.AutoSize = true;
+            FilterByCategoryRadioButton.Location = new Point(211, 75);
+            FilterByCategoryRadioButton.Name = "FilterByCategoryRadioButton";
+            FilterByCategoryRadioButton.Size = new Size(176, 29);
+            FilterByCategoryRadioButton.TabIndex = 5;
+            FilterByCategoryRadioButton.TabStop = true;
+            FilterByCategoryRadioButton.Text = "Filter By Category";
+            FilterByCategoryRadioButton.UseVisualStyleBackColor = true;
+            FilterByCategoryRadioButton.CheckedChanged += radioButton2_CheckedChanged;
             // 
             // StansGrocery
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(998, 597);
-            Controls.Add(radioButton2);
-            Controls.Add(radioButton1);
+            ClientSize = new Size(436, 650);
+            Controls.Add(FilterByCategoryRadioButton);
+            Controls.Add(FilterByAisleRadioButton);
             Controls.Add(FilterComboBox);
             Controls.Add(SearchTextBox);
             Controls.Add(listBox1);
@@ -169,7 +175,7 @@
         private ToolStripMenuItem helpToolStripMenuItem;
         private ToolStripMenuItem aboutToolStripMenuItem;
         private ToolTip MainToolTip;
-        private RadioButton radioButton1;
-        private RadioButton radioButton2;
+        private RadioButton FilterByAisleRadioButton;
+        private RadioButton FilterByCategoryRadioButton;
     }
 }
