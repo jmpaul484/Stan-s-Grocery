@@ -130,6 +130,11 @@ namespace Stan_s_Grocery
         private void SearchButton_Click(object sender, EventArgs e)
         {
             Searching();
+
+            if (listBox1.Text == "")
+            {
+                listBox1.Items.Add($"Sorry no matches for {SearchTextBox.Text}");
+            }
         }
     }
 }
