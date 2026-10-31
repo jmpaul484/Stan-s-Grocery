@@ -41,6 +41,7 @@
             MainToolTip = new ToolTip(components);
             FilterByAisleRadioButton = new RadioButton();
             FilterByCategoryRadioButton = new RadioButton();
+            SearchButton = new Button();
             MenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -143,11 +144,22 @@
             FilterByCategoryRadioButton.UseVisualStyleBackColor = true;
             FilterByCategoryRadioButton.CheckedChanged += FilterByCategoryRadioButton_CheckedChanged;
             // 
+            // SearchButton
+            // 
+            SearchButton.Location = new Point(229, 36);
+            SearchButton.Name = "SearchButton";
+            SearchButton.Size = new Size(112, 64);
+            SearchButton.TabIndex = 6;
+            SearchButton.Text = "Search";
+            SearchButton.UseVisualStyleBackColor = true;
+            SearchButton.Click += SearchButton_Click;
+            // 
             // StansGrocery
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(771, 650);
+            Controls.Add(SearchButton);
             Controls.Add(FilterByCategoryRadioButton);
             Controls.Add(FilterByAisleRadioButton);
             Controls.Add(FilterComboBox);
@@ -177,5 +189,6 @@
         private ToolTip MainToolTip;
         private RadioButton FilterByAisleRadioButton;
         private RadioButton FilterByCategoryRadioButton;
+        private Button SearchButton;
     }
 }

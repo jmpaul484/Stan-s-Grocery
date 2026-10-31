@@ -44,15 +44,15 @@ namespace Stan_s_Grocery
                     {
                         string currentLine = reader.ReadLine();
 
-                        // 1. Split and clean the text FIRST
+                        // Split and clean the text FIRST
                         temp = currentLine.Split(',')
                                           .Select(text => text.Replace("\"", "").Replace("$", "").Replace("ITM", "").Replace("##LOC", "").Replace("%%CAT", ""))
                                           .ToArray();
 
-                        // 2. Add the CLEANED text to the ListBox
+                        // Add the CLEANED text to the ListBox
                         listBox1.Items.Add(string.Join(", ", temp));
 
-                        // 3. Assign the cleaned values to 2D array
+                        // Assign the cleaned values to 2D array
                         GroceryItems[index, 0] = temp[0];
                         GroceryItems[index, 1] = temp[1];
                         GroceryItems[index, 2] = temp[2];
@@ -95,9 +95,9 @@ namespace Stan_s_Grocery
             {
                 Close();
             }
-            Searching();
-
             
+
+
         }
         private void SearchTextBox_Clicked(object sender, MouseEventArgs e)
         {
@@ -125,6 +125,11 @@ namespace Stan_s_Grocery
         private void FilterByCategoryRadioButton_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            Searching();
         }
     }
 }
