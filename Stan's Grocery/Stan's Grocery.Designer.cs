@@ -42,6 +42,7 @@
             FilterByAisleRadioButton = new RadioButton();
             FilterByCategoryRadioButton = new RadioButton();
             SearchButton = new Button();
+            ResetButton = new Button();
             MenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -154,11 +155,22 @@
             SearchButton.UseVisualStyleBackColor = true;
             SearchButton.Click += SearchButton_Click;
             // 
+            // ResetButton
+            // 
+            ResetButton.Location = new Point(111, 36);
+            ResetButton.Name = "ResetButton";
+            ResetButton.Size = new Size(112, 64);
+            ResetButton.TabIndex = 7;
+            ResetButton.Text = "Reset";
+            ResetButton.UseVisualStyleBackColor = true;
+            ResetButton.Click += ResetButton_Click;
+            // 
             // StansGrocery
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(771, 650);
+            Controls.Add(ResetButton);
             Controls.Add(SearchButton);
             Controls.Add(FilterByCategoryRadioButton);
             Controls.Add(FilterByAisleRadioButton);
@@ -190,5 +202,6 @@
         private RadioButton FilterByAisleRadioButton;
         private RadioButton FilterByCategoryRadioButton;
         private Button SearchButton;
+        private Button ResetButton;
     }
 }

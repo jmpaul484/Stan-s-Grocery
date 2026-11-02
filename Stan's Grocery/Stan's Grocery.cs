@@ -95,7 +95,7 @@ namespace Stan_s_Grocery
             {
                 Close();
             }
-            
+
 
 
         }
@@ -186,6 +186,17 @@ namespace Stan_s_Grocery
             {
                 listBox1.Items.Add($"Sorry no matches for {SearchTextBox.Text}");
             }
+        }
+
+        private void ResetButton_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+            FilterByCategoryRadioButton.Checked = false;
+            FilterByAisleRadioButton.Checked = false;
+            FilterComboBox.Items.Clear();
+            FilterComboBox.Text = "Filter";
+            SearchTextBox.Text = "Search";
+            ReadWholeFile();
         }
     }
 }
