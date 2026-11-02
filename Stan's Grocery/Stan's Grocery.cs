@@ -109,7 +109,26 @@ namespace Stan_s_Grocery
 
         private void FilterComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Ensure an item is actually selected in the dropdown
+            if (FilterComboBox.SelectedIndex < 0) return;
 
+            string selectedFilter = FilterComboBox.SelectedItem.ToString();
+            listBox1.Items.Clear();
+
+            // Determine which column to check based on the active radio button
+            int columnIndex = FilterByAisleRadioButton.Checked ? 1 : 2;
+
+            for (int index = 0; index < GroceryItems.GetLength(0); index++)
+            {
+                // Filter against the correct column
+                if (GroceryItems[index, columnIndex].Equals(selectedFilter, StringComparison.OrdinalIgnoreCase))
+                {
+                    listBox1.Items.Add(string.Join(", ",
+                        GroceryItems[index, 0],
+                        GroceryItems[index, 1],
+                        GroceryItems[index, 2]));
+                }
+            }
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -119,11 +138,42 @@ namespace Stan_s_Grocery
 
         private void FilterByAisleRadioButton_CheckedChanged(object sender, EventArgs e)
         {
+            if (!FilterByAisleRadioButton.Checked)
+            {
+                return;
+            }
 
+            FilterComboBox.Items.Clear();
+
+            var aisles = GroceryItems.Cast<string>()
+                .Where((value, index) => index % GroceryItems.GetLength(1) == 1)
+                .Where(value => !string.IsNullOrWhiteSpace(value))
+                .Distinct(StringComparer.OrdinalIgnoreCase)
+                .OrderBy(value => value);
+
+            FilterComboBox.Items.AddRange(aisles.ToArray());
+            FilterComboBox.SelectedIndex = -1;
+            FilterComboBox.Text = "Filter";
         }
 
         private void FilterByCategoryRadioButton_CheckedChanged(object sender, EventArgs e)
         {
+            if (!FilterByCategoryRadioButton.Checked)
+            {
+                return;
+            }
+
+            FilterComboBox.Items.Clear();
+
+            var categories = GroceryItems.Cast<string>()
+                .Where((value, index) => index % GroceryItems.GetLength(1) == 2)
+                .Where(value => !string.IsNullOrWhiteSpace(value))
+                .Distinct(StringComparer.OrdinalIgnoreCase)
+                .OrderBy(value => value);
+
+            FilterComboBox.Items.AddRange(categories.ToArray());
+            FilterComboBox.SelectedIndex = -1;
+            FilterComboBox.Text = "Filter";
 
         }
 
@@ -131,7 +181,8 @@ namespace Stan_s_Grocery
         {
             Searching();
 
-            if (listBox1.Text == "")
+            // Check if the search yielded zero items
+            if (listBox1.Items.Count == 0)
             {
                 listBox1.Items.Add($"Sorry no matches for {SearchTextBox.Text}");
             }
