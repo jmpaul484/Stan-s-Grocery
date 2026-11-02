@@ -50,7 +50,7 @@ namespace Stan_s_Grocery
                                           .ToArray();
 
                         // Add the CLEANED text to the ListBox
-                        listBox1.Items.Add(string.Join(", ", temp));
+                        DisplayBox.Items.Add(string.Join(", ", temp));
 
                         // Assign the cleaned values to 2D array
                         GroceryItems[index, 0] = temp[0];
@@ -72,7 +72,7 @@ namespace Stan_s_Grocery
         {
             string searchText = SearchTextBox.Text.Trim();
 
-            listBox1.Items.Clear();
+            DisplayBox.Items.Clear();
 
             for (int index = 0; index < GroceryItems.GetLength(0); index++)
             {
@@ -81,7 +81,7 @@ namespace Stan_s_Grocery
                 if (string.IsNullOrWhiteSpace(searchText) ||
                     itemName.Contains(searchText, StringComparison.OrdinalIgnoreCase))
                 {
-                    listBox1.Items.Add(string.Join(", ",
+                    DisplayBox.Items.Add(string.Join(", ",
                         GroceryItems[index, 0],
                         GroceryItems[index, 1],
                         GroceryItems[index, 2]));
@@ -113,7 +113,7 @@ namespace Stan_s_Grocery
             if (FilterComboBox.SelectedIndex < 0) return;
 
             string selectedFilter = FilterComboBox.SelectedItem.ToString();
-            listBox1.Items.Clear();
+            DisplayBox.Items.Clear();
 
             // Determine which column to check based on the active radio button
             int columnIndex = FilterByAisleRadioButton.Checked ? 1 : 2;
@@ -123,7 +123,7 @@ namespace Stan_s_Grocery
                 // Filter against the correct column
                 if (GroceryItems[index, columnIndex].Equals(selectedFilter, StringComparison.OrdinalIgnoreCase))
                 {
-                    listBox1.Items.Add(string.Join(", ",
+                    DisplayBox.Items.Add(string.Join(", ",
                         GroceryItems[index, 0],
                         GroceryItems[index, 1],
                         GroceryItems[index, 2]));
@@ -133,7 +133,12 @@ namespace Stan_s_Grocery
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            // 1. Check if an item is actually selected to prevent errors
+            if (DisplayBox.SelectedItem != null)
+            {
+                // 2. Change 'YourLabelName' to the actual name of your Label control
+                DisplayLabel.Text = ($"{DisplayBox.SelectedItem.ToString()}");
+            }
         }
 
         private void FilterByAisleRadioButton_CheckedChanged(object sender, EventArgs e)
@@ -182,21 +187,53 @@ namespace Stan_s_Grocery
             Searching();
 
             // Check if the search yielded zero items
-            if (listBox1.Items.Count == 0)
+            if (DisplayBox.Items.Count == 0)
             {
-                listBox1.Items.Add($"Sorry no matches for {SearchTextBox.Text}");
+                DisplayBox.Items.Add($"Sorry no matches for {SearchTextBox.Text}");
             }
         }
 
         private void ResetButton_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
+            DisplayBox.Items.Clear();
             FilterByCategoryRadioButton.Checked = false;
             FilterByAisleRadioButton.Checked = false;
             FilterComboBox.Items.Clear();
             FilterComboBox.Text = "Filter";
             SearchTextBox.Text = "Search";
             ReadWholeFile();
+        }
+
+        private void searchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Searching();
+
+            // Check if the search yielded zero items
+            if (DisplayBox.Items.Count == 0)
+            {
+                DisplayBox.Items.Add($"Sorry no matches for {SearchTextBox.Text}");
+            }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void searchToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Searching();
+
+            // Check if the search yielded zero items
+            if (DisplayBox.Items.Count == 0)
+            {
+                DisplayBox.Items.Add($"Sorry no matches for {SearchTextBox.Text}");
+            }
+        }
+
+        private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
