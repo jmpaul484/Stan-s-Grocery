@@ -1,3 +1,7 @@
+//Jonathan Paul
+//RCET2265
+// Fall 2026
+//https://github.com/jmpaul484/Stan-s-Grocery.git
 namespace Stan_s_Grocery
 {
     public partial class StansGrocery : Form
